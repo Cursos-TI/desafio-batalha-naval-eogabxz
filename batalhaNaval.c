@@ -8,18 +8,49 @@ int main() {
     char linha[10] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H','I', 'J'};
 
     //posição inicial dos navios
-    int linhaHorizontal = 2, colunaHorizontal = 3; //linha 2, coluna 3
-    int linhaVertical = 5, colunaVertical = 6; //linha 5, coluna 6
+    int linhaHorizontal = 4, colunaHorizontal = 4; //linha 4, coluna 4
+    int linhaVertical = 5, colunaVertical = 7; //linha 5, coluna 7
 
     //posicionando os navios
     for (int i = 0; i < 3; i++)
     {
-       tabuleiro[linhaHorizontal][colunaHorizontal + i] = 3;
+        if (tabuleiro[linhaHorizontal][colunaHorizontal + i] == 0)
+        {
+            tabuleiro[linhaHorizontal][colunaHorizontal + i] = 3;
+        }else{
+            printf("Sobreposição do navio na horizontal!\n");
+        }
     }
+    
     
     for (int i = 0; i < 3; i++)
     {
-       tabuleiro[linhaVertical + i][colunaVertical] = 3;
+        if (tabuleiro[linhaVertical + i][colunaVertical] == 0)
+        {
+            tabuleiro[linhaVertical + i][colunaVertical] = 3;
+        }else{
+            printf("Sobreposição do navio na vertical!\n");
+        }
+    }
+
+    //navio diagonal
+    int linhaDiag1 = 0, colunaDiag1 = 0;
+    for (int i = 0; i < 3; i++)
+    {
+        if (tabuleiro[linhaDiag1 + i][colunaDiag1 + i] == 0)
+        {
+            tabuleiro[linhaDiag1 + i][colunaDiag1 + i] = 3;
+        }
+        
+    }
+    int linhaDiag2 = 0, colunaDiag2 = 9;
+    for (int i = 0; i < 3; i++)
+    {
+        if (tabuleiro[linhaDiag2 + i][colunaDiag2 - i] == 0)
+        {
+            tabuleiro[linhaDiag2 + i][colunaDiag2 - i] = 3;
+        }
+        
     }
 
     //exibindo o tabuleiro para o usuário
@@ -44,11 +75,6 @@ int main() {
         printf("\n");
         
     }
-
-    // Nível Aventureiro - Expansão do Tabuleiro e Posicionamento Diagonal
-    // Sugestão: Expanda o tabuleiro para uma matriz 10x10.
-    // Sugestão: Posicione quatro navios no tabuleiro, incluindo dois na diagonal.
-    // Sugestão: Exiba o tabuleiro completo no console, mostrando 0 para posições vazias e 3 para posições ocupadas.
 
     // Nível Mestre - Habilidades Especiais com Matrizes
     // Sugestão: Crie matrizes para representar habilidades especiais como cone, cruz, e octaedro.
