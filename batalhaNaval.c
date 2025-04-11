@@ -7,52 +7,59 @@ int main() {
     //letras das colunas
     char linha[10] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H','I', 'J'};
 
-    //posição inicial dos navios
-    int linhaHorizontal = 4, colunaHorizontal = 4; //linha 4, coluna 4
-    int linhaVertical = 5, colunaVertical = 7; //linha 5, coluna 7
+    //cruz
+    int cruzLinha = 4, cruzColuna = 4; //linha 4, coluna 4
 
-    //posicionando os navios
-    for (int i = 0; i < 3; i++)
+    //horizontal da cruz
+    for (int i = -2; i < 3; i++)
     {
-        if (tabuleiro[linhaHorizontal][colunaHorizontal + i] == 0)
+        if (tabuleiro[cruzLinha][cruzColuna + i] == 0)
         {
-            tabuleiro[linhaHorizontal][colunaHorizontal + i] = 3;
+            tabuleiro[cruzLinha][cruzColuna + i] = 3;
         }else{
-            printf("Sobreposição do navio na horizontal!\n");
+            printf("Sobreposição\n");
         }
     }
-    
-    
-    for (int i = 0; i < 3; i++)
+    //vertical da cruz
+    for (int i = -1; i < 2; i++)
     {
-        if (tabuleiro[linhaVertical + i][colunaVertical] == 0)
+        if (tabuleiro[cruzLinha + i][cruzColuna] == 0)
         {
-            tabuleiro[linhaVertical + i][colunaVertical] = 3;
+            tabuleiro[cruzLinha + i][cruzColuna] = 3;
         }else{
-            printf("Sobreposição do navio na vertical!\n");
-        }
-    }
-
-    //navio diagonal
-    int linhaDiag1 = 0, colunaDiag1 = 0;
-    for (int i = 0; i < 3; i++)
-    {
-        if (tabuleiro[linhaDiag1 + i][colunaDiag1 + i] == 0)
-        {
-            tabuleiro[linhaDiag1 + i][colunaDiag1 + i] = 3;
+            printf("Sobreposição\n");
         }
         
     }
-    int linhaDiag2 = 0, colunaDiag2 = 9;
-    for (int i = 0; i < 3; i++)
+    
+    //octa horizontal
+    int octaLinha = 2, octaColuna = 8;
+    for (int i = -1; i < 2; i++)
     {
-        if (tabuleiro[linhaDiag2 + i][colunaDiag2 - i] == 0)
+        if (tabuleiro[octaLinha][octaColuna + i] == 0)
         {
-            tabuleiro[linhaDiag2 + i][colunaDiag2 - i] = 3;
+            tabuleiro[octaLinha][octaColuna + i] = 3;
+        }else{
+            printf("Sobreposição\n");
+        }
+    //octa vertical
+    for (int i = -1; i < 2; i++)
+    {
+        if (tabuleiro[octaLinha + i][octaColuna] == 0)
+        {
+            tabuleiro[octaLinha + i][octaColuna] = 3;
+        }else{
+            printf("Sobreposição\n");
         }
         
     }
-
+    
+        
+    }
+    
+    
+    
+ 
     //exibindo o tabuleiro para o usuário
     printf("Tabuleiro de Batalha Naval\n");
     
