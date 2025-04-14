@@ -13,13 +13,17 @@ int main() {
     //horizontal da cruz
     for (int i = -2; i < 3; i++)
     {
-        if (tabuleiro[cruzLinha][cruzColuna + i] == 0)
+        if (i == 0) continue;
+        int col = cruzColuna + i;
+        if (col >= 0 && col < 10 && tabuleiro[cruzLinha][col] == 0)
         {
-            tabuleiro[cruzLinha][cruzColuna + i] = 3;
-        }else{
-            printf("Sobreposição\n");
-        }
+            tabuleiro[cruzLinha][col] = 3;
+        }else if (col >= 0 && col < 10)
+        {
+            printf("Sobreposição!\n");
+        }   
     }
+
     //vertical da cruz
     for (int i = -1; i < 2; i++)
     {
@@ -33,38 +37,61 @@ int main() {
     }
     
     //octa horizontal
-    int octaLinha = 2, octaColuna = 8;
+    int octaLinha = 2, octaColuna = 7;
     for (int i = -1; i < 2; i++)
     {
-        if (tabuleiro[octaLinha][octaColuna + i] == 0)
+        if (i == 0) continue;
+        int col = octaColuna + i;
+        if (col >= 0 && col < 10 && tabuleiro[octaLinha][col] == 0)
         {
-            tabuleiro[octaLinha][octaColuna + i] = 3;
-        }else{
+            tabuleiro[octaLinha][col] = 3;
+        }
+        else if (col >= 0 && col < 10)
+        {
             printf("Sobreposição\n");
         }
+    }    
+
     //octa vertical
-    for (int i = -1; i < 2; i++)
-    {
-        if (tabuleiro[octaLinha + i][octaColuna] == 0)
+        for (int i = -1; i < 2; i++)
         {
-            tabuleiro[octaLinha + i][octaColuna] = 3;
-        }else{
-            printf("Sobreposição\n");
+            if (tabuleiro[octaLinha + i][octaColuna] == 0)
+            {
+                tabuleiro[octaLinha + i][octaColuna] = 3;
+            }else{
+                printf("Sobreposição\n");
+            }
+    }
+
+    //cone
+    int coneLinha = 6, coneColuna = 7;
+    for (int i = 0; i < 3; i++)
+    {
+        for (int j = -i; j <= i; j++)
+        {
+            int lin = coneLinha + i;
+            int col = coneColuna + j;
+            if (lin >= 0 && lin < 10 && col >= 0 && col < 10)
+            {
+                if (tabuleiro[lin][col] == 0)
+                {
+                    tabuleiro[lin][col] = 3;
+                }
+                else{
+                    printf("Sobreposição!\n");
+                }
+            }
+            
         }
         
     }
-    
-        
-    }
-    
-    
     
  
     //exibindo o tabuleiro para o usuário
     printf("Tabuleiro de Batalha Naval\n");
     
     //imprimir letras das colunas
-    printf("  "); //espaço para alinhar as letras das colunas com o tabuleiro
+    printf("   "); //espaço para alinhar as letras das colunas com o tabuleiro
     for (int j = 0; j < 10; j++)
     {
         printf("%c ", linha[j]);
@@ -80,29 +107,7 @@ int main() {
             printf("%d ", tabuleiro[i][j]);
         }
         printf("\n");
-        
     }
-
-    // Nível Mestre - Habilidades Especiais com Matrizes
-    // Sugestão: Crie matrizes para representar habilidades especiais como cone, cruz, e octaedro.
-    // Sugestão: Utilize estruturas de repetição aninhadas para preencher as áreas afetadas por essas habilidades no tabuleiro.
-    // Sugestão: Exiba o tabuleiro com as áreas afetadas, utilizando 0 para áreas não afetadas e 1 para áreas atingidas.
-
-    // Exemplos de exibição das habilidades:
-    // Exemplo para habilidade em cone:
-    // 0 0 1 0 0
-    // 0 1 1 1 0
-    // 1 1 1 1 1
-    
-    // Exemplo para habilidade em octaedro:
-    // 0 0 1 0 0
-    // 0 1 1 1 0
-    // 0 0 1 0 0
-
-    // Exemplo para habilidade em cruz:
-    // 0 0 1 0 0
-    // 1 1 1 1 1
-    // 0 0 1 0 0
 
     return 0;
 }
