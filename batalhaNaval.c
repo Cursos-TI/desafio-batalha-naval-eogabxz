@@ -80,6 +80,29 @@ int main() {
                 else{
                     printf("Sobreposição!\n");
                 }
+            }   
+        }
+    }
+
+    //marcar com 5 areas afetadas
+    int habilidadeLinha = 2, habilidadeColuna = 2;
+
+    //criando área 3x3
+    for (int i = -1; i < 2; i++)
+    {
+        for (int j = -1; j < 2; j++)
+        {
+            int lin = habilidadeLinha + i;
+            int col = habilidadeColuna + j;
+            if (lin >= 0 && lin < 10 && col >= 0 && col < 10)
+            {
+                if (tabuleiro[lin][col] == 0)
+                {
+                    tabuleiro[lin][col] = 5;
+                } else {
+                    printf("Sobreposição!\n");
+                }
+                
             }
             
         }
